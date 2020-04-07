@@ -7,7 +7,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     name='image2excel',
-    version="0.0.4",
+    version="0.0.5",
     description="converts images to excel tables",
     author_email='michel.kluger@gmail.com',
     license='MIT',

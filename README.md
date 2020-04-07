@@ -2,6 +2,10 @@
 
 This library recieves as inputs an image and outputs an Excel file (.xlsx) where each cell will be a pixel of the image.
 
+it is recommended to import the package in the following way:
+
+    from image2excel import im2xlsx
+
 The function has two parameters, resize (True is default) and keep_aspect (False is default), as shown by the following example:
 
     im2xlsx(file,resize=True,keepAspect=False)

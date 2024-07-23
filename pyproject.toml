@@ -25,8 +25,8 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/yourusername/image2excel"
-"Bug Tracker" = "https://github.com/yourusername/image2excel/issues"
+"Homepage" = "https://github.com/michelkluger/image2excel"
+"Bug Tracker" = "https://github.com/michelkluger/image2excel/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]

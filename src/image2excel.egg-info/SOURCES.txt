@@ -1,8 +1,0 @@
-README.md
-setup.py
-src/image2excel.py
-src/image2excel.egg-info/PKG-INFO
-src/image2excel.egg-info/SOURCES.txt
-src/image2excel.egg-info/dependency_links.txt
-src/image2excel.egg-info/requires.txt
-src/image2excel.egg-info/top_level.txt

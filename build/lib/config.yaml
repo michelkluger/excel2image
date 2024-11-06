@@ -1,0 +1,32 @@
+name: Python Mypy Check
+
+on:
+  push:
+    branches: [type]  # Run mypy on each push to main
+  pull_request:
+    branches: [main]  # Run mypy on each PR to main
+
+jobs:
+  mypy-check:
+    runs-on: windows-latest  # Specify your OS (windows-latest, ubuntu-latest, etc.)
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.12'  # Specify the Python version you are using
+
+    - name: Install dependencies
+      run: |
+        python -m venv venv
+        source venv/Scripts/activate  # Use `source venv/bin/activate` on Ubuntu
+        pip install -r requirements.txt  # Ensure mypy is in your requirements
+        pip install mypy
+
+    - name: Run mypy
+      run: |
+        source venv/Scripts/activate
+        mypy . --config-file mypy.ini  # Ensure mypy.ini is in your root directory

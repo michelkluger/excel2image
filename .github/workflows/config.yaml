@@ -12,7 +12,7 @@ jobs:
 
     steps:
     - name: Check out repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Set up Python
       uses: actions/setup-python@v3
@@ -22,11 +22,11 @@ jobs:
     - name: Install dependencies
       run: |
         python -m venv venv
-        source venv/Scripts/activate  # Use `source venv/bin/activate` on Ubuntu
-        pip install -r requirements.txt  # Ensure mypy is in your requirements
+        . venv/Scripts/activate  # Use `source venv/bin/activate` on Ubuntu
+        #pip install -r requirements.txt  # Ensure mypy is in your requirements
         pip install mypy
 
     - name: Run mypy
       run: |
-        source venv/Scripts/activate
-        mypy 
+        . venv/Scripts/activate
+        mypy . --strict --show-error-codes --pretty

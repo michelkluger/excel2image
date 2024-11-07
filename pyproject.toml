@@ -9,15 +9,7 @@ description = "converts images to excel tables"
 authors = [{ email = "michel.kluger@gmail.com" }]
 license = { text = "MIT" }
 requires-python = ">=3"
-#dependencies = [
-#    "pandas",
-#    "Pillow",
-#    "colormap",
-#    "openpyxl",
-#    "XlsxWriter",
-#    "Jinja2",
-#    "easydev",
-#]
+
 
 dependencies = [
     "asttokens==2.4.1",
@@ -100,16 +92,23 @@ config_file = "config.yaml"
 
 [tool.mypy]
 python_version = "3.12" 
-files = ["build/lib"]  # List of files or directories to check
+files = ["src"]  # List of files or directories to check
 strict = true # Enable strict mode
 ignore_missing_imports = false 
 
-# Disallow the use of Any types
-#disallow_any_unimported = true
-#disallow_any_expr = true
-#disallow_any_decorated = true
-#disallow_any_explicit = true
-#disallow_any_generics = true
+# Enable essential type checking options
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_return_any = true
+warn_unreachable = true
+
+# Add numpy plugin for better numpy typing
+plugins = ["numpy.typing.mypy_plugin"]
 
 no_implicit_reexport = true # Check variable redefinitions
 

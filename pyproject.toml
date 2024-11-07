@@ -108,7 +108,7 @@ warn_return_any = true
 warn_unreachable = true
 
 # Add numpy plugin for better numpy typing
-# plugins = ["numpy.typing.mypy_plugin"]
+plugins = ["numpy.typing.mypy_plugin"]
 
 no_implicit_reexport = true # Check variable redefinitions
 

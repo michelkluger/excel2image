@@ -1,4 +1,5 @@
 import numpy.lib.recfunctions as nlr
+import numpy
 import pandas as pd
 import os
 from colormap import rgb2hex

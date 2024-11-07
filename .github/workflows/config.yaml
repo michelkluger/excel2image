@@ -4,7 +4,7 @@ on:
   push:
     branches: [type]  # Run mypy on each push to main
   pull_request:
-    branches: [main]  # Run mypy on each PR to main
+    branches: [type]  # Run mypy on each PR to main
 
 jobs:
   mypy-check:
@@ -29,4 +29,4 @@ jobs:
     - name: Run mypy
       run: |
         source venv/Scripts/activate
-        mypy . --config-file mypy.ini  # Ensure mypy.ini is in your root directory
+        mypy 

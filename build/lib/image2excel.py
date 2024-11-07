@@ -17,13 +17,13 @@ def __default_path(fileName : str) -> str:
 def __colorCells(string : str) -> str:
     return 'background-color:' + string
 
-def __changeZoom(excelFile : pd.io.excel._base.ExcelFile, zoom=10):
+def __changeZoom(excelFile : pd.io.excel._base.ExcelFile, zoom : int =10) -> None:
     wb = load_workbook(excelFile)
     for ws in wb.worksheets:
         ws.sheet_view.zoomScale = zoom
     wb.save(excelFile)
 
-def __resize_picture(file, keep_aspect, extension) -> Image.Image:
+def __resize_picture(file, keep_aspect : bool, extension : str) -> Image.Image:
     image: Union[Image.Image, ImageFile.ImageFile]  = Image.open(file)
     if(sorted(image.size)[0]> 260 or sorted(image.size)[1]> 300):
         if keep_aspect:
@@ -38,7 +38,7 @@ def __resize_picture(file, keep_aspect, extension) -> Image.Image:
         image.save(file)
     return file
 
-def im2xlsx(file, resize=True, keep_aspect=False):
+def im2xlsx(file,  resize : bool =True, keep_aspect : bool =False) -> None:
     path, fileName = os.path.split(file)
     extension = os.path.splitext(file)[1]
     if (path == ""):

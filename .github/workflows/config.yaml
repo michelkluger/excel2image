@@ -17,18 +17,17 @@ jobs:
     - name: Install UV
       uses: astral-sh/setup-uv@v3
       with:
-        enable-cache: true
-        cache-dependency-glob: |
-          **/requirements*.txt
-          **/pyproject.toml
+        version: "0.5.0"  # Pin to specific version as recommended
 
-    - name: Install Python
-      run: uv python install 3.12
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version-file: "pyproject.toml"
 
     - name: Install dependencies
       run: |
-        uv pip install -r pyproject.toml
+        uv sync --all-extras --dev
         uv pip install mypy
 
     - name: Run mypy
-      run: mypy . --strict --show-error-codes --pretty
+      run: uv run mypy . --strict --show-error-codes --pretty

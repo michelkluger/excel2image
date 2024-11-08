@@ -10,12 +10,12 @@ authors = [{ email = "michel.kluger@gmail.com" }]
 license = { text = "MIT" }
 requires-python = ">=3.8"
 dependencies = [
-    "numpy>=2.0.0",
-    "openpyxl>=3.1.0",
-    "pandas>=2.0.0",
-    "pillow>=10.0.0",
-    "matplotlib>=3.9.0",
-    "colormap>=1.0.0",
+    "numpy",
+    "openpyxl",
+    "pandas",
+    "pillow",
+    "matplotlib",
+    "colormap",
 ]
 
 [project.urls]

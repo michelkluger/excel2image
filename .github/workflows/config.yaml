@@ -1,4 +1,4 @@
-name: Python Mypy Check
+name: Python Pyright Check
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [type]
 
 jobs:
-  mypy-check:
+  pyright-check:
     runs-on: ubuntu-latest
 
     steps:
@@ -30,7 +30,7 @@ jobs:
         source .venv/bin/activate
         uv pip sync pyproject.toml
 
-    - name: Run mypy
+    - name: Run pyright
       run: |
         source .venv/bin/activate
-        mypy . --strict --show-error-codes --pretty
+        pyright . --warnings

@@ -14,8 +14,7 @@ dependencies = [
     "pillow",
     "matplotlib",
     "colormap",
-    "mypy",
-    "typing-extensions",
+    "pyright",
 ]
 
 [project.urls]

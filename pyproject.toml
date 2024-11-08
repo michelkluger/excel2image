@@ -10,23 +10,18 @@ authors = [{ email = "michel.kluger@gmail.com" }]
 license = { text = "MIT" }
 requires-python = ">=3.8"
 dependencies = [
-    "numpy",
-    "openpyxl",
-    "pandas",
+    "pandas[excel]",
     "pillow",
     "matplotlib",
     "colormap",
+    "mypy",
 ]
 
 [project.urls]
 "Homepage" = "https://github.com/michelkluger/image2excel"
 "Bug Tracker" = "https://github.com/michelkluger/image2excel/issues"
 
-[tool.setuptools.packages.find]
-where = ["src"]
-
 [tool.mypy]
 python_version = "3.12"
-files = ["src"]
 strict = true
 ignore_missing_imports = true

@@ -1,0 +1,8 @@
+README.md
+image2excel.py
+pyproject.toml
+image2excel.egg-info/PKG-INFO
+image2excel.egg-info/SOURCES.txt
+image2excel.egg-info/dependency_links.txt
+image2excel.egg-info/requires.txt
+image2excel.egg-info/top_level.txt

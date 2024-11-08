@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: image2excel
+Version: 0.1.0
+Summary: converts images to excel tables
+Author-email: michel.kluger@gmail.com
+License: MIT
+Project-URL: Homepage, https://github.com/michelkluger/image2excel
+Project-URL: Bug Tracker, https://github.com/michelkluger/image2excel/issues
+Requires-Python: >=3.8
+Requires-Dist: pandas[excel]
+Requires-Dist: pillow
+Requires-Dist: matplotlib
+Requires-Dist: colormap
+Requires-Dist: mypy

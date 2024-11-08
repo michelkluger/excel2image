@@ -27,7 +27,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        #uv pip install -r requirements.txt  # Uncomment if you have requirements.txt
+        uv pip install -r pyproject.toml
         uv pip install mypy
 
     - name: Run mypy

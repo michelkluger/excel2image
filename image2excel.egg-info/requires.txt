@@ -1,0 +1,5 @@
+pandas[excel]
+pillow
+matplotlib
+colormap
+mypy

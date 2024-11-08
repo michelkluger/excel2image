@@ -1,7 +1,0 @@
-pandas
-Pillow
-colormap
-openpyxl
-XlsxWriter
-Jinja2
-easydev

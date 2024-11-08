@@ -15,6 +15,7 @@ dependencies = [
     "matplotlib",
     "colormap",
     "mypy",
+    "typing-extensions",
 ]
 
 [project.urls]

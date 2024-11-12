@@ -8,34 +8,24 @@ version = "0.1.0"
 description = "converts images to excel tables"
 authors = [{ email = "michel.kluger@gmail.com" }]
 license = { text = "MIT" }
-requires-python = ">=3"
+requires-python = ">=3.8"
 dependencies = [
     "pandas",
-    "Pillow",
+    "pillow",
+    "matplotlib",
     "colormap",
-    "openpyxl",
-    "XlsxWriter",
-    "Jinja2",
-    "easydev",
-]
-classifiers = [
-    "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
+    "pyright",
+    "typing_extensions",
+    "numpy", 
+    "openpyxl"  
+    
 ]
 
 [project.urls]
 "Homepage" = "https://github.com/michelkluger/image2excel"
 "Bug Tracker" = "https://github.com/michelkluger/image2excel/issues"
 
-[tool.setuptools.packages.find]
-where = ["src"]
-
-[tool.setuptools.package-data]
-image2excel = ["py.typed"]
-
-[tool.setuptools]
-py-modules = ["image2excel"]
-
-[tool.setuptools.dynamic]
-readme = { file = ["README.md"], content-type = "text/markdown" }
+[tool.mypy]
+python_version = "3.12"
+strict = true
+ignore_missing_imports = true

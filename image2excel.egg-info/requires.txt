@@ -1,0 +1,6 @@
+pandas[excel]
+pillow
+matplotlib
+colormap
+pyright
+typing_extensions

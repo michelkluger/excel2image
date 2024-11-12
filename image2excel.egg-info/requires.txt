@@ -2,4 +2,5 @@ pandas[excel]
 pillow
 matplotlib
 colormap
-mypy
+pyright
+typing_extensions

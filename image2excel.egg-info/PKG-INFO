@@ -11,4 +11,5 @@ Requires-Dist: pandas[excel]
 Requires-Dist: pillow
 Requires-Dist: matplotlib
 Requires-Dist: colormap
-Requires-Dist: mypy
+Requires-Dist: pyright
+Requires-Dist: typing_extensions

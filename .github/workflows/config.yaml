@@ -2,9 +2,9 @@ name: Python Pyright Check
 
 on:
   push:
-    branches: [type]
+    branches: ['**']
   pull_request:
-    branches: [type]
+    branches: ['**']
 
 jobs:
   pyright-check:

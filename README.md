@@ -1,27 +1,95 @@
-<h1>Documentation for image2excel</h1>
+# image2excel
 
-This library recieves as inputs an image and outputs an Excel file (.xlsx) where each cell will be a pixel of the image.
+[![CI](https://github.com/michelkluger/excel2image/actions/workflows/ci.yml/badge.svg)](https://github.com/michelkluger/excel2image/actions/workflows/ci.yml)
+[![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![Typed](https://img.shields.io/badge/type--checked-ty-blue.svg)](https://github.com/astral-sh/ty)
 
-it is recommended to import the package in the following way:
+Convert any image into an Excel spreadsheet where **each cell is a pixel**, colored to recreate the original image.
 
-    from image2excel import im2xlsx
+## Installation
 
-The function has two parameters, resize (True is default) and keep_aspect (False is default), as shown by the following example:
+```bash
+pip install image2excel
+```
 
-    im2xlsx(file,resize=True,keepAspect=False)
+Or with [uv](https://docs.astral.sh/uv/):
 
-The function has no return
+```bash
+uv add image2excel
+```
 
----
+## Quick Start
 
-The file parameter should contain a path, otherwise path where the script is running is taken as default path. The input path will be used for the output path as well.
+### Python API
 
-The resize parameter will only work to reduce the image, in case the image is already smaller in both dimensions than the recommended 260 x 300, no resizing will take place
+```python
+from image2excel import im2xlsx
 
-the parameter keep aspect, as it is relatively clear, will keep the ratio between width and height of the image 
+# Basic usage - creates photo.xlsx alongside the source image
+im2xlsx("photo.png")
 
----
+# Keep original size (no resizing)
+im2xlsx("photo.png", resize=False)
 
-This package and documentation are in the first version and it is also my first package in PYPI, so in case you have any sort of recommendations, please let me know =))
+# Resize while preserving aspect ratio
+im2xlsx("photo.png", keep_aspect=True)
+```
 
-Also if you know how to make the code more performant or robust, I will also be happy with improving this 
+### Command Line
+
+```bash
+# Convert an image
+image2excel photo.png
+
+# Skip resizing
+image2excel photo.png --no-resize
+
+# Preserve aspect ratio
+image2excel photo.png --keep-aspect
+```
+
+## How It Works
+
+1. Opens the image and converts it to RGB
+2. Optionally resizes to fit within 260x300 pixels (configurable)
+3. Maps each pixel to an Excel cell with a matching background color
+4. Sets the zoom to 10% so you can see the full picture
+
+The output `.xlsx` file is saved next to the source image.
+
+## API Reference
+
+### `im2xlsx(file, *, resize=True, keep_aspect=False) -> Path`
+
+| Parameter     | Type         | Default | Description                                |
+| ------------- | ------------ | ------- | ------------------------------------------ |
+| `file`        | `str \| Path` | -       | Path to the source image                   |
+| `resize`      | `bool`       | `True`  | Shrink images larger than 260x300          |
+| `keep_aspect` | `bool`       | `False` | Preserve aspect ratio when resizing        |
+
+**Returns:** `Path` to the generated `.xlsx` file.
+
+## Development
+
+```bash
+# Clone and install with dev dependencies
+git clone https://github.com/michelkluger/excel2image.git
+cd excel2image
+uv sync --dev
+
+# Run tests
+uv run pytest
+
+# Lint and format
+uv run ruff check .
+uv run ruff format .
+
+# Type check
+uv run ty check src/
+```
+
+## License
+
+[MIT](LICENSE)

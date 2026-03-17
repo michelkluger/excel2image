@@ -1,31 +1,76 @@
 [build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
 name = "image2excel"
-version = "0.1.0"
-description = "converts images to excel tables"
-authors = [{ email = "michel.kluger@gmail.com" }]
-license = { text = "MIT" }
-requires-python = ">=3.8"
+version = "1.0.0"
+description = "Convert images to Excel spreadsheets where each cell is a colored pixel"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.12"
+authors = [{ name = "Michel Kluger", email = "michel.kluger@gmail.com" }]
+keywords = ["image", "excel", "pixel-art", "spreadsheet", "converter"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Typing :: Typed",
+]
 dependencies = [
-    "pandas",
-    "pillow",
-    "matplotlib",
-    "colormap",
-    "pyright",
-    "typing_extensions",
-    "numpy", 
-    "openpyxl"  
-    
+    "numpy>=1.26",
+    "openpyxl>=3.1",
+    "Pillow>=10.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.9",
+    "ty>=0.0.1a7",
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/michelkluger/image2excel"
-"Bug Tracker" = "https://github.com/michelkluger/image2excel/issues"
+Homepage = "https://github.com/michelkluger/excel2image"
+Repository = "https://github.com/michelkluger/excel2image"
+Issues = "https://github.com/michelkluger/excel2image/issues"
 
-[tool.mypy]
-python_version = "3.12"
-strict = true
-ignore_missing_imports = true
+[project.scripts]
+image2excel = "image2excel.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/image2excel"]
+
+# --- Ruff (linter + formatter) ---
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "D",       # pydocstyle — docs not enforced globally
+    "COM812",  # trailing comma — conflicts with formatter
+    "ISC001",  # single-line implicit string concat — conflicts with formatter
+    "S101",    # assert used (fine in tests)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["ANN", "S", "PLR2004"]
+"src/image2excel/cli.py" = ["T201"]
+
+# --- ty (type checker) ---
+
+[tool.ty.environment]
+python-version = "3.12"
+
+# --- Pytest ---
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
